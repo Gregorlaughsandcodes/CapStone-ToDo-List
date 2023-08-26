@@ -8,5 +8,40 @@
 </head>
 <body>
     <h1>This is a ToDo App</h1>
+
+
+    <!--
+Add a Task by clicking the add Button:
+
+Ergebnis Google:
+
+function addItem(){
+    var li = document.createElement("LI");  
+    var input = document.getElementById("add");
+    li.innerHTML = input.value;
+    input.value = "";
+    document.getElementById("tasks").appendChild(li);
+
+-->
+
+<form action="/" method="post">
+<input type="text" id="add" name="note" placeholder="Write down your notes">
+
+<input type="submit" id="btnAdd" value="Add">
+</form>
+
+
+<ul id="tasks">
+    <li>Coffee</li>
+    <li>Tea</li>
+    <li>Milk</li>
+</ul>
+
+<script> const node = document.createElement("li"); </script> 
+<script> const textnode = document.createTextNode("<%=addNote%>");</script>
+<script> node.appendChild(textnode);</script>
+<script> document.getElementById("tasks").appendChild(node);</script>
+
+
 </body>
 </html>
