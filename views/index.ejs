@@ -30,18 +30,20 @@ function addItem(){
 <input type="submit" id="btnAdd" value="Add">
 </form>
 
-
 <ul id="tasks">
-    <li>Coffee</li>
-    <li>Tea</li>
-    <li>Milk</li>
+<%if (locals.notes){ %> <!--zum checken ob das notes Array existiert! Wichtig sonst error -->
+    <% for (var i = 0; i<notes.length; i++){ %>
+        <li>
+            <%=locals.notes[i] %>
+        </li>
+    <% } %>
+    <% } else { %>
+        <li> </li>
+    <% } %>
 </ul>
 
-<script> const node = document.createElement("li"); </script> 
-<script> const textnode = document.createTextNode("<%=addNote%>");</script>
-<script> node.appendChild(textnode);</script>
-<script> document.getElementById("tasks").appendChild(node);</script>
-
+<!--EInfügen des JS Files Wichtig am ende einfügen !! -->
+<!-- <script src="index.js" charset="utf-8"></script> -->
 
 </body>
 </html>
