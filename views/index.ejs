@@ -3,26 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/styles.css">
+
     <title>ToDo List</title>
-    <link rel="stylesheet" href="/public/styles/styles.css">
+    
 </head>
 <body>
     <h1>This is a ToDo App</h1>
-
-
-    <!--
-Add a Task by clicking the add Button:
-
-Ergebnis Google:
-
-function addItem(){
-    var li = document.createElement("LI");  
-    var input = document.getElementById("add");
-    li.innerHTML = input.value;
-    input.value = "";
-    document.getElementById("tasks").appendChild(li);
-
--->
 
 <form action="/" method="post">
 <input type="text" id="add" name="note" placeholder="Write down your notes">
@@ -30,20 +17,35 @@ function addItem(){
 <input type="submit" id="btnAdd" value="Add">
 </form>
 
+
+
+
+
 <ul id="tasks">
 <%if (locals.notes){ %> <!--zum checken ob das notes Array existiert! Wichtig sonst error -->
+
     <% for (var i = 0; i<notes.length; i++){ %>
-        <li>
-            <%=locals.notes[i] %>
-        </li>
+
+            <label id="L<%=i%>"  ><input type="checkbox" onClick=clicked(<%=i%>)> <%=locals.notes[i] %> </label>
+            <br>
+
     <% } %>
     <% } else { %>
-        <li> </li>
+
     <% } %>
 </ul>
 
 <!--EInfügen des JS Files Wichtig am ende einfügen !! -->
 <!-- <script src="index.js" charset="utf-8"></script> -->
+
+<script>
+    function clicked(index){
+        var label = document.getElementById("L"+index);
+        console.log(label)
+        label.classList.toggle("done");
+    }
+    </script>
+
 
 </body>
 </html>

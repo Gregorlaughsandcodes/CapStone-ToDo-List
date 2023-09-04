@@ -5,13 +5,10 @@ import { dirname } from "path";
 import { fileURLToPath } from "url";
 const __dirname = dirname(fileURLToPath(import.meta.url)); // dirname wird mit den 3 oberen Zeilen "erstellt"
 
-
 const app = express();
 
-app.use(bodyParser.urlencoded({ extended: true }))
-// app.use(express.static('public'));
-app.use(express.static('public/styles'));
-
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static("public"));
 
 const noteArray = [];
 
@@ -22,12 +19,12 @@ app.get("/", function(req,res){
 });
 
 
+
 app.post("/",function(req,res){
 
     console.log(req.body["note"]);
 
     noteArray.push(req.body["note"]);
-
     console.log(noteArray);
 
     res.render("index.ejs", {notes: noteArray});
@@ -37,4 +34,3 @@ app.post("/",function(req,res){
 app.listen(3000,function(req,res){
     console.log("Server running on port 3000.");
 });
-
