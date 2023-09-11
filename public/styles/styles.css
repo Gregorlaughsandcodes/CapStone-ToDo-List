@@ -1,7 +1,13 @@
 body{
-    background-color: red;
+    background-color: rgb(77, 33, 33);
 }
 
 .done{
-    text-decoration: line-through;
+    text-decoration: line-through !important;
+}
+
+
+.title{
+    width:100%;
+    text-align: center;
 }
